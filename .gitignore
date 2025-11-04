@@ -24,8 +24,8 @@
 **/.terraformrc
 **/terraform.rc
 
-# # Ignore providers file everywhere
-# **/providers.tf
+# Ignore providers file everywhere
+**/providers.tf
 
 # Plugin/cache directories
 **/.terraform/plugins/

@@ -1,45 +1,30 @@
-
-// Variables for top-level module under terraform_modules/modules
-
 variable "resource_group_name" {
-  description = "Name of the resource group to read/create resources in"
-  type        = string
+  type    = string
+  default = "myrg"
 }
 
 variable "vm_count" {
-  description = "Number of network interfaces / VMs to create"
-  type        = number
-  default     = 1
-}
-
-variable "vm_name" {
-  description = "Optional VM name prefix. If empty, module will use a generated name."
-  type        = string
-  default     = ""
+  type    = number
+  default = 1
 }
 
 variable "location" {
-  description = "Azure location for resources"
-  type        = string
-  default     = "eastus"
+  type    = string
+  default = "centralindia"
+}
+
+variable "vm_name" {
+  type    = string
+  default = "myvm"
 }
 
 variable "ip_configurations" {
-  description = <<-EOT
-		A list of ip configuration objects for each network interface. Each object should have:
-		- name (string)
-		- subnet_id (string)
-	EOT
   type = list(object({
     name      = string
     subnet_id = string
   }))
-  default = []
+  default = [{
+    name      = "internal"
+    subnet_id = "/subscriptions/28c3c8ef-805a-4440-b2bf-7d16d637fb7c/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/default"
+  }]
 }
-
-variable "tags" {
-  description = "Tags to apply to created resources"
-  type        = map(string)
-  default     = {}
-}
-

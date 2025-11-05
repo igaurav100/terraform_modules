@@ -30,4 +30,3 @@
 # Plugin/cache directories
 **/.terraform/plugins/
 **/.terraform.d/
-

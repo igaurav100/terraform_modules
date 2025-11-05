@@ -1,0 +1,8 @@
+az group create --name myrg --location eastus
+
+az network vnet create \
+  --resource-group myrg \
+  --name mynet \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name default \
+  --subnet-prefix 10.0.1.0/24
